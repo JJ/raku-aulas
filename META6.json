@@ -1,19 +1,21 @@
 {
-  "auth" : "",
-  "authors" : [],
-  "depends" : [
+  "name": "",
+  "description": "",
+  "version": "0.0.1",
+  "perl": "6.d",
+  "meta-version": 1,
+  "authors": [],
+  "auth": "",
+  "depends": [
     "JSON::Fast"
   ],
-  "description" : "",
-  "license" : "Artistic-2.0",
-  "name" : "",
-  "perl" : "6.d",
-  "provides" : { },
-  "resources" : [ ],
-  "source-url" : "",
-  "tags" : [
+  "provides": {
+    "Auler::Aula": "lib/Auler/Aula.pm6"
+  },
+  "resources": [],
+  "license": "Artistic-2.0",
+  "tags": [
     "modules"
   ],
-    "version" : "0.0.1",
-    "meta-version": 1
+  "source-url": ""
 }
