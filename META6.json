@@ -1,0 +1,19 @@
+{
+  "auth" : "",
+  "authors" : [],
+  "depends" : [
+    "JSON::Fast"
+  ],
+  "description" : "",
+  "license" : "Artistic-2.0",
+  "name" : "",
+  "perl" : "6.d",
+  "provides" : { },
+  "resources" : [ ],
+  "source-url" : "",
+  "tags" : [
+    "modules"
+  ],
+    "version" : "0.0.1",
+    "meta-version": 1
+}
