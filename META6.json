@@ -10,7 +10,8 @@
     "JSON::Fast"
   ],
   "provides": {
-    "Auler::Aula": "lib/Auler/Aula.pm6"
+    "Auler::Aula": "lib/Auler/Aula.pm6",
+    "Auler::Aula-Curso": "lib/Auler/Aula-Curso.pm6"
   },
   "resources": [],
   "license": "Artistic-2.0",
