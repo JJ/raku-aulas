@@ -4,7 +4,13 @@ Template for Raku modules, classes, roles, to be distributed as a
 single package in the ecosystem. Fill this README with your
 instructions.
 
-## Installing
+## User Journey
+
+El administrador a principio de cada año comprueba que en el sistema están
+ todas las aulas con su capacidad correspondiente. Sabiendo que en cada
+  asignatura se ha matriculado un número determinado de estudiantes, tiene
+   que asignar aulas a asignaturas de forma óptima siguiendo todas las
+    restricciones legales necesarias.
 
 
 <-- Fill your prerequisites here, how to install using zef, how to
