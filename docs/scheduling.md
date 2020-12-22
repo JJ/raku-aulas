@@ -145,9 +145,101 @@ programmer:
 
 Let's call it `Capped`, as in having a certain capacity. Since both
 objects will have the self-same method, `capacity`, we can call it to
-sort them out.
+sort them out. Our example above shows that we need to create an
+object out of a couple of elements, so that's another issue
 
-We could already create a function that does the thing, but in OO
+- As a programmer, I need to build an object using positional
+  arguments that are strings.
+  
+So finally our role will have all these things:
+
+```perl6
+unit role Cap;
+
+has Str $!name is required;
+has Int $!capacity is required;
+
+submethod new( Str $name, Int $capacity ) {
+    self.bless( :$name, :$capacity )
+}
+
+submethod BUILD( :$!name, :$!capacity ) {};
+
+method name() { $!name }
+method capacity() { $!capacity }
+```
+
+plus handy accessors for `name` and `capacity`, all the while keeping
+these privates, also implying that they are immutable. Value objects
+are things that simply get a value, there's not much business logic to them.
+
+We could already create a function that does the sorgint out of a list
+of classrooms/courses, that is, Caps, but in OO
 design we should try and put into classes (from which we spawn
 objects) as many entities from the original problem as possible. These
 entities will be the ones actually doing the heavy lifting.
+
+It would be great, again, if we could create kinda the same things,
+because we will able to handle them uniformly. But there's the
+conundrum: one of them will contain a list of Courses, another a list
+of Classrooms. They both `do` `Cap`, so in principle we could create
+a class that hosts lists of `Cap`s. But this controller class will
+have some business logic: it will create objects of that class; we
+can't simply use Roles to create classes that compose them. So we will
+use a [*curried
+Role*](https://docs.raku.org/type/Metamodel::CurriedRoleHOW), a
+parametrized role that uses, as a parameter, the role we'll be
+instantiating it with. This will be `Cap-List`:
+
+```perl6
+unit role Cap-List[::T];
+
+has T @!list;
+
+submethod new( $file where .IO.e ) {
+    $file.IO.lines
+            ==> map( *.split( /","\s+/) )
+            ==> map( { T.new( @_[0], +@_[1] ) } )
+            ==> sort( { -$_.capacity } )
+            ==> my @list;
+    self.bless( :@list );
+}
+submethod BUILD( :@!list ) {}
+
+method list() { @!list }
+```
+
+This code is familiar and similar to what we've done above, except
+we're swapping the object creation and sorting list, and we're use
+`.capacity` to sort the list. We create a list and `bless` it into the
+object. Out of that, we create a couple of classes:
+
+```perl6
+unit class Classroom-List does Cap-List[Classroom];
+unit class Course-List does Cap-List[Course];
+```
+
+We don't need any more logic; that's all there is. It's essentially
+the same thing, same business logic, but we're working in a type-safe
+way. We have also [tested the whole
+thing](https://github.com/JJ/raku-aulas), so we've frozen the API and
+protected it from future evolution. Which Santa approves.
+
+So we're almost there. Let's write the assignment function with this:
+
+```perl6
+my $courses = Course-List.new( "docs/courses.csv");
+my $classes = Classroom-List.new( "docs/classes.csv");
+say ($classes.list Z $courses.list )
+        .map( {  $_.map( { .name } ).join( "\t→\t") }  )
+        .join( "\n" );
+```
+
+This returns the same thing as we had before. But we've hidden all
+business logic (sorting, and anything else we might want) in the
+object capsule.
+
+## But, have we?
+
+Not actually. Assignment should also be encapsulated in some class,
+and thoroughly tested. That's, however, left for another ocassion.

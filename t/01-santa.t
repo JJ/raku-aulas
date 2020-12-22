@@ -22,4 +22,8 @@ is( $courses.list.first.capacity, 130, "Sorted stuff" );
 my $classes = Classroom-List.new( "docs/classes.csv");
 is( $classes.list.first.capacity, 150, "Sorted stuff" );
 
+say ($classes.list Z $courses.list )
+        .map( {  $_.map( { .name } ).join( "\t→\t") }  )
+        .join( "\n" );
+
 done-testing;
