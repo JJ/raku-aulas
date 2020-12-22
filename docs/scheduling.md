@@ -111,7 +111,7 @@ beginning.
 
 The cold that pervades the North Pole makes everything a little less
 agile. But no worries, we can still be agile when we create something
-for IT operations there. First thing we need are user stories. Who
+for IT operations there. First thing we need are [user stories](https://www.atlassian.com/agile/project-management/user-stories). Who
 wants to create a schedule and what is it? So let's sit down and write
 them down.
 
@@ -133,3 +133,8 @@ day, something with a name and a capacity is something with a name and
 a capacity. This begs for a factoring out of the common code,
 following the DRY (don't repeat yourself) principle.
 
+Besides, we have a prototype above that pretty much says that whatever
+we use for classrooms and courses, our life is going to be easier if
+we can sort it in the same way. So it's probably best if we spin off a
+role with the common behavior. Let's call it `Capped`, as in having a
+certain capacity.
