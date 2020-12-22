@@ -10,9 +10,13 @@
     "JSON::Fast"
   ],
   "provides": {
+    "Auler::Asignaciones": "lib/Auler/Asignaciones.pm6",
     "Auler::Aula": "lib/Auler/Aula.pm6",
     "Auler::Aula-Curso": "lib/Auler/Aula-Curso.pm6",
-    "Auler::Aulario": "lib/Auler/Aulario.pm6"
+    "Auler::Aulario": "lib/Auler/Aulario.pm6",
+    "Auler::Localizaciones": "lib/Auler/Localizaciones.pm6",
+    "Auler::Planta": "lib/Auler/Planta.pm6",
+    "X::Auler::Aula": "lib/X/Auler/Aula.pm6"
   },
   "resources": [],
   "license": "Artistic-2.0",
