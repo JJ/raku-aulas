@@ -16,6 +16,10 @@
     "Auler::Aulario": "lib/Auler/Aulario.pm6",
     "Auler::Localizaciones": "lib/Auler/Localizaciones.pm6",
     "Auler::Planta": "lib/Auler/Planta.pm6",
+    "Cap": "lib/Cap.rakumod",
+    "Cap-List": "lib/Cap-List.rakumod",
+    "Classroom": "lib/Classroom.rakumod",
+    "Course": "lib/Course.rakumod",
     "X::Auler::Aula": "lib/X/Auler/Aula.pm6"
   },
   "resources": [],

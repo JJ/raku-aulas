@@ -136,5 +136,18 @@ following the DRY (don't repeat yourself) principle.
 Besides, we have a prototype above that pretty much says that whatever
 we use for classrooms and courses, our life is going to be easier if
 we can sort it in the same way. So it's probably best if we spin off a
-role with the common behavior. Let's call it `Capped`, as in having a
-certain capacity.
+role with the common behavior. Let's make an issue out of that. Pretty
+much the same as the US, but the protagonist is going to be a
+programmer:
+
+- As a programmer, I need to sort classrooms and courses by capacity
+  using the same. 
+
+Let's call it `Capped`, as in having a certain capacity. Since both
+objects will have the self-same method, `capacity`, we can call it to
+sort them out.
+
+We could already create a function that does the thing, but in OO
+design we should try and put into classes (from which we spawn
+objects) as many entities from the original problem as possible. These
+entities will be the ones actually doing the heavy lifting.
