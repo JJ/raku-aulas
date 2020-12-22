@@ -4,7 +4,7 @@ sub read-and-sort( $file where .IO.e ) {
     $file.IO.lines
       ==> map( *.split( /","\s+/) )
       ==> sort( { -$_[1].Int } )
-      ==> map( { Pair.new( $_[0], $_[1] ) } )
+      ==> map( { Pair.new( |@_ ) } )
 }
 
 say (read-and-sort( "classes.csv") Z read-and-sort( "courses.csv"))
