@@ -5,8 +5,8 @@ has T @!list;
 submethod new( $file where .IO.e ) {
     $file.IO.lines
             ==> map( *.split( /","\s+/) )
-            ==> sort( { -$_[1].Int } )
-            ==> map( { Pair.new( |@_ ) } )
+            ==> map( { T.new( @_[0], +@_[1] ) } )
+            ==> sort( { -$_.capacity } )
             ==> my @list;
     self.bless( :@list );
 }
