@@ -1,10 +1,10 @@
 # Scheduling classes
 
-Every year by tht beginning of the school year, which starts by
+Every year by the beginning of the school year, which starts by
 January 8th in the North Pole, after every version of the Christmas
 gift-giving spirit has made their rounds, Santa needs to sit down to
 schedule the classes of the North Pole Community College. These elves
-need continous education, and they need to *really* learn about those
+need continuous education, and they need to *really* learn about those
 newfangled toys, apart from the tools and skills of the trade.
 
 > Plus it's a good thing to have those elves occupied during the whole
@@ -19,7 +19,7 @@ winning snowball fights. So you can't just top up enrolment: every
 year, you need to check the available classrooms, and then match it to
 the class that will be the most adequate for it.
 
-Here'are the available classrooms:
+Here are the available classrooms:
 
 
 ```text
@@ -41,7 +41,7 @@ could be the enrolment after the registration period is over.
 Woodworking 101, 130
 Toymaking 101, 120
 Wrapping 210, 40
-Reindeed speed driving 130, 30
+Reindeer speed driving 130, 30
 ToyOps 310, 45
 Ha-ha-haing 401, 33
 ```
@@ -83,7 +83,7 @@ Santa	→	Toymaking 101
 Claus	→	ToyOps 310
 Niklaas	→	Wrapping 210
 Reyes Magos	→	Ha-ha-haing 401
-Olentzero	→	Reindeed speed driving 130
+Olentzero	→	Reindeer speed driving 130
 ```
 
 So the Kringle lecture hall gets woodworking, and it goes down from
@@ -173,7 +173,7 @@ plus handy accessors for `name` and `capacity`, all the while keeping
 these privates, also implying that they are immutable. Value objects
 are things that simply get a value, there's not much business logic to them.
 
-We could already create a function that does the sorgint out of a list
+We could already create a function that does the sorting out of a list
 of classrooms/courses, that is, Caps, but in OO
 design we should try and put into classes (from which we spawn
 objects) as many entities from the original problem as possible. These
@@ -242,4 +242,4 @@ object capsule.
 ## But, have we?
 
 Not actually. Assignment should also be encapsulated in some class,
-and thoroughly tested. That's, however, left for another ocassion.
+and thoroughly tested. That's, however, left for another occasion.
