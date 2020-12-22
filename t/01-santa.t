@@ -17,5 +17,9 @@ for ( Course, Classroom ) -> \C {
 }
 
 my $courses = Course-List.new( "docs/courses.csv");
+is( $courses.list.first.capacity, 130, "Sorted stuff" );
+
+my $classes = Classroom-List.new( "docs/classes.csv");
+is( $classes.list.first.capacity, 150, "Sorted stuff" );
 
 done-testing;

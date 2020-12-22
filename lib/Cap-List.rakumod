@@ -12,3 +12,5 @@ submethod new( $file where .IO.e ) {
 }
 submethod BUILD( :@!list ) {}
 
+method list() { @!list }
+
