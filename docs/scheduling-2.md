@@ -144,7 +144,7 @@ used with `for`. `for $courses` will actually call
 
 This is not actually a digression, this is totally on topic. I will
 have to digress, however, to explain what *would* have happened in the
-case we would have used normal assignment, as in 
+case we would have used normal assignment, as in
 
 ```raku
 my $boxed-courses = Course-List.new( "docs/courses.csv");
@@ -214,6 +214,37 @@ But, can we?
 ## Wrapping up with a script
 
 
+Santa was really satisfied with this new application. He only needed
+to write this small main script:
 
+```raku
+use Schedule;
 
+sub MAIN( $courses-file where .IO.e = "docs/courses.csv",
+          $classes-file where .IO.e = "docs/classes.csv") {
+    say Schedule.new( $courses-file, $classes-file)
+}
+```
+
+Which was straight and to the point: here are the files, here's the
+schedule. But, besides, it was tested, prepared for the unextpected,
+and could actually be expanded to take into account unexpected events
+(what happens if you can't fit elves into a particular class? What if
+you need to take into account other constraints, like not filling
+biggest first, but filling smuggest first? You can just change the
+algorithm, without even changing this main script. Which you don't
+really need:
+
+```shell
+raku -Ilib -MSchedule -e "say Schedule.new( | @*ARGS )" docs/courses.csv docs/classes.csv
+```
+
+using the command line switches for the library search path (`-I`) and
+loading a module ( `-M`) you can just write a statement that will take
+the arguments and *flatten* them to make them into the method's
+signature.
+
+Doing this, Santa sat down in his favorite armchair to enjoy a cup of
+cask-aged eggnogg and watch every Santa-themed movie that was being
+streamed until next NPCC started.
 
