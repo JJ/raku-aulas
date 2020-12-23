@@ -91,13 +91,13 @@ With respect to the original version, we've just mixed in the
 `Iterable` role and implemented an `iterator` method, that returns the
 iterator on the `@!list` attribute. That's not the only thing we need
 for it to be in "a zipping context", however. Which begs a small
-diggression on Raku containers and binding.
+digression on Raku containers and binding.
 
 ### Containers and containees
 
 > El cielo esta entablicuadrillado, ¿quién lo desentablicuadrillará?
 > El que lo entablicuadrille, buen entablicuadrillador será.
-> -- Spanish tongue twiter, loosely translated as "The sky is
+> -- Spanish tongue twister, loosely translated as "The sky is
 > tablesquarebricked, who will de-trablesquarebrick it? The
 > tablesquarebrickalyer that tablesquaresbricks it, good
 > tablesquarebrickalyer will be.
@@ -227,7 +227,7 @@ sub MAIN( $courses-file where .IO.e = "docs/courses.csv",
 ```
 
 Which was straight and to the point: here are the files, here's the
-schedule. But, besides, it was tested, prepared for the unextpected,
+schedule. But, besides, it was tested, prepared for the unexpected,
 and could actually be expanded to take into account unexpected events
 (what happens if you can't fit elves into a particular class? What if
 you need to take into account other constraints, like not filling
@@ -245,6 +245,6 @@ the arguments and *flatten* them to make them into the method's
 signature.
 
 Doing this, Santa sat down in his favorite armchair to enjoy a cup of
-cask-aged eggnogg and watch every Santa-themed movie that was being
+cask-aged eggnog and watch every Santa-themed movie that was being
 streamed until next NPCC started.
 
