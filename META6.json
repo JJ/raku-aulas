@@ -19,7 +19,8 @@
     "Cap": "lib/Cap.rakumod",
     "Cap-List": "lib/Cap-List.rakumod",
     "Classroom": "lib/Classroom.rakumod",
-    "Classroom-List": "lib/Classroom-List.pm6",
+    "Classroom-List": "lib/Classroom-List.rakumod",
+    "Course-List": "lib/Course-List.rakumod",
     "Course": "lib/Course.rakumod",
     "X::Auler::Aula": "lib/X/Auler/Aula.pm6"
   },
