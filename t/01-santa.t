@@ -16,14 +16,21 @@ for ( Course, Classroom ) -> \C {
     is( $c.name, $ID, "Assignment of name OK");
 }
 
-my $courses = Course-List.new( "docs/courses.csv");
+my $courses := Course-List.new( "docs/courses.csv");
 is( $courses.list.first.capacity, 130, "Sorted stuff" );
 
-my $classes = Classroom-List.new( "docs/classes.csv");
+my $classes := Classroom-List.new( "docs/classes.csv");
 is( $classes.list.first.capacity, 150, "Sorted stuff" );
 
-say ($classes.list Z $courses.list )
+say ($classes Z $courses )
         .map( {  $_.map( { .name } ).join( "\t→\t") }  )
         .join( "\n" );
+
+for $courses, $classes -> \iterable {
+    my @list = iterable.list;
+    for iterable -> $i {
+        is( $i, @list.shift, "Running over list" )
+    }
+}
 
 done-testing;

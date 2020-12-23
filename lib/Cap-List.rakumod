@@ -1,4 +1,4 @@
-unit role Cap-List[::T];
+unit role Cap-List[::T] does Iterable;
 
 has T @!list;
 
@@ -13,4 +13,6 @@ submethod new( $file where .IO.e ) {
 submethod BUILD( :@!list ) {}
 
 method list() { @!list }
+
+method iterator() {@!list.iterator}
 

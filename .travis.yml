@@ -5,8 +5,9 @@ services:
 before_install:
   - uname -a
   - perl --version
-  - python --version
-  
+  - prove --version
+  - cpanm --version
+
 install:
   - docker pull jjmerelo/raku-test
 

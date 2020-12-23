@@ -38,6 +38,22 @@ tested (well,
 they [can](https://github.com/JJ/perl6-test-script-output), but that's
 another story). So let's give this script a bit of class.
 
+## Ducking it out with lists
+
+Actually, there's something that does not really cut it in the script
+above. In the original script, you took a couple of lists and zipped
+it together. Here you need to call the `.list` method to achieve the
+same. But the object is still the same, right? Shouldn't it be
+possible, and easy, to just zip together the two objects? Also, that
+begs the client of the class to know the actual implementation. An
+object should hide its internals as much as possible. Let's make
+that an issue to solve
+
+> As a programmer, I want the object holding the courses and
+> classrooms to behave as would a list in a "zipping" context.
+
+
+
 ## Scheduler classes
 
 
