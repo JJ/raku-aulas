@@ -19,6 +19,6 @@ submethod BUILD( :@!schedule ) {}
 method schedule() { @!schedule }
 
 method gist {
-    @!schedule.map( { .join( "\t⇒\t" ) } ).join("\t");
+    @!schedule.map( { .join( "\t⇒\t" ) } ).join("\n");
 }
 

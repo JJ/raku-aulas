@@ -177,6 +177,42 @@ create an issue to fix
   couple of files with courses and classes.
 
 
+Santa is happy to prove such a thing:
+
+```raku
+use Course-List;
+use Classroom-List;
+
+unit class Schedule;
+
+has @!schedule;
+
+submethod new( $courses-file where .IO.e,
+               $classes-file where .IO.e) {
+
+    my $courses := Course-List.new($courses-file);
+    my $classes := Classroom-List.new($classes-file);
+    my @schedule = ($classes Z $courses).map({ $_.map({ .name }) });
+    self.bless(:@schedule);
+}
+
+submethod BUILD( :@!schedule ) {}
+
+method schedule() { @!schedule }
+
+method gist {
+    @!schedule.map( { .join( "\t⇒\t" ) } ).join("\t");
+}
+```
+
+Not only it schedules courses, you can simply use it by `say`ing
+it. It's also tested, so you know that it's going to work no matter
+what. With that, we can close the user story.
+
+But, can we?
+
+## Wrapping up with a script
+
 
 
 
