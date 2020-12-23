@@ -2,7 +2,11 @@ languages: minimal
 
 services:
   - docker
-
+before_install:
+  - uname -a
+  - perl --version
+  - python --version
+  
 install:
   - docker pull jjmerelo/raku-test
 
