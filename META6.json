@@ -22,6 +22,7 @@
     "Classroom-List": "lib/Classroom-List.rakumod",
     "Course-List": "lib/Course-List.rakumod",
     "Course": "lib/Course.rakumod",
+    "Schedule": "lib/Schedule.rakumod",
     "X::Auler::Aula": "lib/X/Auler/Aula.pm6"
   },
   "resources": [],
