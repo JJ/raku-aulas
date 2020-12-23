@@ -1,9 +1,9 @@
 languages: minimal
+dist: bionic
 
 services:
   - docker
 before_install:
-  - uname -a
   - perl --version
   - prove --version
   - cpanm --version
