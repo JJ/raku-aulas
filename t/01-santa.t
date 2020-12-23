@@ -5,6 +5,7 @@ use Course;
 use Classroom;
 use Course-List;
 use Classroom-List;
+use Schedule;
 
 my Str $ID = "Aula1";
 my Int $capacidad = 33;
@@ -17,6 +18,7 @@ for ( Course, Classroom ) -> \C {
 }
 
 my $courses := Course-List.new( "docs/courses.csv");
+# .name.say for $courses;
 is( $courses.list.first.capacity, 130, "Sorted stuff" );
 
 my $classes := Classroom-List.new( "docs/classes.csv");
@@ -32,5 +34,10 @@ for $courses, $classes -> \iterable {
         is( $i, @list.shift, "Running over list" )
     }
 }
+
+
+my $schedule = Schedule.new("docs/courses.csv", "docs/classes.csv");
+is( $schedule.schedule[0].elems, 2, "Stores an array");
+like( $schedule.gist, /Nik/, "Produces output");
 
 done-testing;

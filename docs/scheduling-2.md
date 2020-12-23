@@ -93,8 +93,91 @@ iterator on the `@!list` attribute. That's not the only thing we need
 for it to be in "a zipping context", however. Which begs a small
 diggression on Raku containers and binding.
 
+### Containers and containees
+
+> El cielo esta entablicuadrillado, ¿quién lo desentablicuadrillará?
+> El que lo entablicuadrille, buen entablicuadrillador será.
+> -- Spanish tongue twiter, loosely translated as "The sky is
+> tablesquarebricked, who will de-trablesquarebrick it? The
+> tablesquarebrickalyer that tablesquaresbricks it, good
+> tablesquarebrickalyer will be.
+
+![This is almost tablesquaredwhatever](https://live.staticflickr.com/5607/31741755686_7e7fd2b883_k_d.jpg)
+
+It's worth the while to check
+out
+[this old Advent article, by Zoffix Znet](https://perl6advent.wordpress.com/2017/12/02/perl-6-sigils-variables-and-containers/),
+on what's binding and what's assignment in the Raku world. Binding is
+essentially calling an object by another name. If you bind an object
+to a variable, that variable will behave exactly the same as the
+object. And the other way round.
+
+```raku
+my $courses := Course-List.new( "docs/courses.csv");
+```
+
+We are simply calling the right hand side of this binding by another
+name, which is shorter and more convenient. We can call any method,
+and also we can put this "in a zipping context" by calling for on it:
+
+```raku
+.name.say for $courses;
+```
+
+Will return
+
+```text
+Woodworking 101
+Toymaking 101
+ToyOps 310
+Wrapping 210
+Ha-ha-haing 401
+Reindeer speed driving 130
+```
+
+As you can see, the "zipping context" is exactly the same as the
+(not-yet-documented)
+[iterable context](https://github.com/Raku/doc/issues/1225), which
+is also invoked (or *coerces* objects into, whatever you prefer) when
+used with `for`. `for $courses` will actually call
+`$courses.iterator`, returning the iterator of the list it contains.
+
+This is not actually a digression, this is totally on topic. I will
+have to digress, however, to explain what *would* have happened in the
+case we would have used normal assignment, as in 
+
+```raku
+my $boxed-courses = Course-List.new( "docs/courses.csv");
+```
+
+Assignment is a nice and peculiar thing in Raku. As [the above
+mentioned article says](https://perl6advent.wordpress.com/2017/12/02/perl-6-sigils-variables-and-containers/),
+it *boxes* an object into a container. You can't easily box any kind
+of thing into a Scalar container,
+so, [Procusto style](https://es.wikipedia.org/wiki/Procusto) it needs
+to fit it into the container in a certain way. But any way you think
+about it, the fact is that, unlike before, `$boxes-courses` is *not* a
+`Course-List` object; it's a `Scalar` object that has *scalarized*, or
+*itemized*, a `Course-List` object. What would you need to de-scalarize
+it? Simply calling
+the [de-cont operator](https://docs.raku.org/routine/%3C%3E) on it, `$boxed-courses<>`,
+which unwraps the container and gives you what's inside.
 
 
 ## Scheduler classes
+
+![Filling the class in all the wrong places](https://live.staticflickr.com/92/244008954_ceff0265c7_k_d.jpg)
+
+> OK, back to our regular schedule...r.
+
+Again, don't let's just try to do things as we see fit. We need to
+create an issue to fix
+
+- As a programmer, I need a class that creates schedules given a
+  couple of files with courses and classes.
+
+
+
+
 
 
