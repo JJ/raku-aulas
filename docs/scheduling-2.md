@@ -52,6 +52,47 @@ that an issue to solve
 > As a programmer, I want the object holding the courses and
 > classrooms to behave as would a list in a "zipping" context.
 
+Santa rubbed his beard thinking about how to pull this
+off. `Course-List` objects are, well, that precise kind of
+objects. They *include* a list, but, how can they behave as a list?
+Also, what's precisely a list "in a zipping context".
+
+Long story short, he figured out that a "zipping context" actually
+iterates over every member of the two lists, in turn, putting them
+together. So we need to make the
+objects
+[`Iterable`](https://docs.raku.org/type/Iterable). Fortunately, that's
+something you can definitely do in Raku. By mixing roles, you can make
+objects behave in some other way, as long as you've got the machinery
+to do so.
+
+
+```raku
+unit role Cap-List[::T] does Iterable;
+
+has T @!list;
+
+submethod new( $file where .IO.e ) {
+    $file.IO.lines
+            ==> map( *.split( /","\s+/) )
+            ==> map( { T.new( @_[0], +@_[1] ) } )
+            ==> sort( { -$_.capacity } )
+            ==> my @list;
+    self.bless( :@list );
+}
+submethod BUILD( :@!list ) {}
+
+method list() { @!list }
+
+method iterator() {@!list.iterator}
+```
+
+With respect to the original version, we've just mixed in the
+`Iterable` role and implemented an `iterator` method, that returns the
+iterator on the `@!list` attribute. That's not the only thing we need
+for it to be in "a zipping context", however. Which begs a small
+diggression on Raku containers and binding.
+
 
 
 ## Scheduler classes

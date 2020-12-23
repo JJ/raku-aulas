@@ -1,5 +1,5 @@
 languages: minimal
-dist: bionic
+dist: focal
 
 services:
   - docker

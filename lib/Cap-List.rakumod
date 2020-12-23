@@ -10,6 +10,7 @@ submethod new( $file where .IO.e ) {
             ==> my @list;
     self.bless( :@list );
 }
+
 submethod BUILD( :@!list ) {}
 
 method list() { @!list }
